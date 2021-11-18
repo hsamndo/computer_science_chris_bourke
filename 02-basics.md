@@ -15,8 +15,7 @@ your reimbursement is $175.61
 
 ### Solution in C
 
-```
-
+```c
 #include <stdio.h>
 
 int main()
