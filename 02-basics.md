@@ -40,3 +40,45 @@ int main()
 }
 ```
 
+## 2.2 Total Cost of Loan
+
+Write a program to compute the total “cost” C of a loan. That is, the
+total amount of interest paid over the life of a loan. To compute this value, use the
+following formula.
+
+```
+  p·i·(1+i)^12n
+C=_____________∗12n−p
+  (1+i)^12n − 1
+```
+
+- p is the starting principle amount
+- i = r/12 where r is the APR on the interval [0,1]
+- n is the number of years the loan is to be paid back
+
+## Solution in C
+
+```c
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    double totalCost(int p,float APR, int n)
+    {
+        double i = APR / 12;
+        double exponent = pow((1+i), (12 * n));
+        
+        double dividend = p * i * exponent;
+        double divisor = exponent - 1;
+
+        double result = (dividend / divisor * ( (12 * n))) - p;
+        
+        return result;
+    }
+
+    printf("%f", totalCost(1000, 0.1, 1));
+
+    return 0;
+}
+```
